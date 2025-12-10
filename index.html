@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MangaDo'kon - Telegram Manga Savdosi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header qismi -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">📚 MangaDo'kon</h1>
+                <div class="header-right">
+                    <button id="cart-btn" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </button>
+                    <button id="theme-toggle" class="theme-btn">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Asosiy kontent -->
+        <main class="main-content">
+            <!-- Hero bo'limi -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h2>Eng zo'r mangalar faqat bizda!</h2>
+                    <p>500+ turdagi manga, manhva va manhua</p>
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Manga qidirish...">
+                        <button id="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Kategoriyalar -->
+            <section class="categories">
+                <h3>Kategoriyalar</h3>
+                <div class="category-list">
+                    <button class="category-btn active" data-category="all">Hammasi</button>
+                    <button class="category-btn" data-category="shonen">Shonen</button>
+                    <button class="category-btn" data-category="shojo">Shojo</button>
+                    <button class="category-btn" data-category="seinen">Seinen</button>
+                    <button class="category-btn" data-category="action">Jangari</button>
+                    <button class="category-btn" data-category="fantasy">Fantastika</button>
+                </div>
+            </section>
+
+            <!-- Manga ro'yxati -->
+            <section class="products-section">
+                <h3>Trenddagi mangalar</h3>
+                <div id="products-container" class="products-grid">
+                    <!-- Manga kartalari bu yerga JavaScript orqali yuklanadi -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Savat modali -->
+        <div id="cart-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Savat</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="cart-items">
+                        <!-- Savatdagi mahsulotlar bu yerga yuklanadi -->
+                    </div>
+                    <div class="cart-total">
+                        <p>Jami: <span id="total-price">0</span> so'm</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="clear-cart" class="btn btn-secondary">Savatni tozalash</button>
+                    <button id="checkout-btn" class="btn btn-primary">Buyurtma berish</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buyurtma modali -->
+        <div id="order-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Buyurtma ma'lumotlari</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="order-form">
+                        <div class="form-group">
+                            <label for="name">Ism</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon raqam</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Manzil</label>
+                            <textarea id="address" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment">To'lov usuli</label>
+                            <select id="payment" required>
+                                <option value="cash">Naqd pul</option>
+                                <option value="card">Karta orqali</option>
+                                <option value="click">Click</option>
+                                <option value="payme">Payme</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Buyurtmani tasdiqlash</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Yordamchi elementlar -->
+        <div id="notification" class="notification"></div>
+        <div id="loader" class="loader">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript fayllari -->
+    <script src="config.js"></script>
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
